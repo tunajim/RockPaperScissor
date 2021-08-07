@@ -141,13 +141,11 @@ function endGame(){
                 document.getElementById('rock').disabled = false; 
                 document.getElementById('paper').disabled = false;
                 document.getElementById('scissors').disabled = false;
-
-
             }else if(event.key === 'n'){
                 window.close();
             }
-    });
-}
+        });
+    }
 
 
 
