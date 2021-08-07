@@ -136,8 +136,6 @@ function endGame(){
             if(event.key === 'y'){
                 document.getElementById('playerScore').innerHTML = 0;
                 document.getElementById('compScore').innerHTML = 0;
-                plScore = 0;
-                compScore = 0;
                 resultMessage.innerHTML = "Press Button to Play!"           
 
                 document.getElementById('rock').disabled = false; 
