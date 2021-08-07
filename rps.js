@@ -43,6 +43,9 @@ let win = 'You Win!';
 let lose = 'You Lose';
 let draw = 'Its a Draw!';
 
+let plScore = 0;
+let compScore = 0; 
+
 function getInput(){
     rock.addEventListener("click", function(){userInput = 'rock';
         console.log(userInput);});
@@ -81,23 +84,25 @@ function updateSprites(){
         computerPlay();
         displayWinner();
         addScore();
+        endGame();
     });
     paper.addEventListener("click", function(){
         document.getElementById('player').src="RockPaperScissors/leftPaper.png";
         computerPlay();
         displayWinner();
         addScore();
+        endGame();
     });
     scissors.addEventListener("click", function(){
         document.getElementById('player').src="RockPaperScissors/leftScissors.png";
         computerPlay();
         displayWinner();
         addScore();
+        endGame();
     });
 }
 
-let plScore = 0;
-let compScore = 0; 
+
 
 function addScore() {
     if(resultMessage.innerHTML === win){
@@ -111,10 +116,44 @@ function addScore() {
     }
 }
 
+function endGame(){
+    if(plScore === 5){
+        document.getElementById('rock').disabled = true; 
+        document.getElementById('paper').disabled = true;
+        document.getElementById('scissors').disabled = true;
 
-function addCompScore(){
-    compScore += 1;
+        resultMessage.innerHTML +=
+        "\nPress 'y' to retry, press 'n' to quit";
+    }else if(compScore === 5){
+        resultMessage.innerHTML +=
+        "\nPress 'y' to retry, press 'n' to quit";
+
+        document.getElementById('rock').disabled = true; 
+        document.getElementById('paper').disabled = true;
+        document.getElementById('scissors').disabled = true;
+    }
+        document.addEventListener("keydown", function(event){
+            if(event.key === 'y'){
+                document.getElementById('playerScore').innerHTML = 0;
+                document.getElementById('compScore').innerHTML = 0;
+                plScore = 0;
+                compScore = 0;
+                resultMessage.innerHTML = "Press Button to Play!"           
+
+                document.getElementById('rock').disabled = false; 
+                document.getElementById('paper').disabled = false;
+                document.getElementById('scissors').disabled = false;
+
+
+            }else if(event.key === 'n'){
+                window.close();
+            }
+    });
 }
+
+
+
+
 
 function play (){
     getInput();
